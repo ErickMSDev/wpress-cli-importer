@@ -88,6 +88,15 @@ Before changing any files, execute a dry run to verify the archive's contents, c
 php wpress-import.php my-backup.wpress --dry-run
 ```
 
+> [!CAUTION]
+> **Data Overwrite Warnings**
+>
+> Running the actual migration will permanently overwrite your target WordPress data:
+> - **Database Overwrite**: The script will **DROP** and completely overwrite any existing database tables sharing the prefix defined in `wp-config.php` (e.g., `wp_`).
+> - **Files Overwrite**: If a `wp-content` folder is already present, the script will ask if you want to create a backup directory. If you decline, matching files will be overwritten in-place.
+>
+> Always run with `--dry-run` first to preview the exact configuration!
+
 ### Step 3: Execute the Migration
 Run the script to start the extraction and interactive database mapping process.
 

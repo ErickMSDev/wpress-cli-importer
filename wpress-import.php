@@ -489,7 +489,8 @@ if ($db_sql_path && file_exists($db_sql_path)) {
         
         cli_print("\n✓ Simulation completed successfully! (No database tables or files were modified).", 'green');
     } else {
-        fwrite(STDOUT, colorize("\nWould you like to import the database dump into '{$db_name}'? [y/N]: ", 'cyan'));
+        cli_print("\n⚠️  WARNING: Importing the database will DROP and OVERWRITE any existing tables in '{$db_name}' that match the prefix '{$table_prefix}'!", 'red', STDERR);
+        fwrite(STDOUT, colorize("Are you sure you want to proceed and import the database dump? [y/N]: ", 'cyan'));
         $answer = trim(strtolower(fgets($handle)));
 
         if ($answer === 'y' || $answer === 'yes') {
