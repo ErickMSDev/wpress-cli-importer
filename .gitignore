@@ -1,0 +1,14 @@
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore massive .wpress backup archive binaries
+*.wpress
+
+# Ignore extracted database dumps
+database.sql
+
+# Ignore extracted WordPress files (since this script runs in-place, do not commit website contents)
+wp-content/
+wp-content-backup-*/
+wp-config.php
